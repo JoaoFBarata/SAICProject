@@ -273,6 +273,15 @@ Image URLs are not being correctly extracted, at least in a clean way, and its c
 ---
 `[{"user":{"id":"FlsU1LbX9dS5e7Ju2ZS7JyQAdVE3","username":"laurenn","photoURL":"https://firebasestorage.googleapis.com:443/v0/b/shoplater.appspot.com/o/user-avatars%2FFlsU1LbX9dS5e7Ju2ZS7JyQAdVE3.jpg?alt=media&token=724709bb-78ac-4a36-961d-47ea4e052244"},"id":357,"title":"Future Garden 🍃","products":[{"id":2237,"title":"Candeeiros de mesa modernos | Candeeiros mesa","images":["https://cdn.sklum.com/pt/wk/308930/...jpg","https://cdn.sklum.com/pt/wk/308941/...jpg","https://cdn.sklum.com/pt/wk/308919/...jpg"]},{"id":2211,"title":"Poltrona suspensa de jardim com base e almofada Anoop","images":["https://cdn.sklum.com/pt/wk/2266635/...jpg","https://cdn.sklum.com/pt/wk/1769025/...jpg","https://cdn.sklum.com/pt/wk/2266635/...jpg","https://cdn.sklum.com/pt/wk/1769025/...jpg"]},{"id":2216,"title":"Mesa de Jardim Redonda em Madeira de Acácia (Ø120 cm) Mura","images":["https://cdn.sklum.com/pt/wk/1857629/...jpg","https://cdn.sklum.com/pt/wk/2217085/...jpg"]},{"id":2218,"title":"Cadeira Suspensa de Jardim com Almofada Rufus","images":["https://cdn.sklum.com/pt/wk/2369269/...jpg","https://cdn.sklum.com/pt/wk/2369269/...jpg","https://cdn.sklum.com/pt/wk/2154387/...jpg","https://cdn.sklum.com/pt/wk/2154387/...jpg"]},{"id":2219,"title":"Luminária de piso LED sem fio externa Lovech ","images":["https://cdn.sklum.com/pt/wk/1819579/...jpg","https://cdn.sklum.com/pt/wk/2112040/...jpg","https://cdn.sklum.com/pt/wk/1819579/...jpg","https://cdn.sklum.com/pt/wk/2112040/...jpg"]}]},{"user": ...}]`
 
+
+## Scraper
+
+After Reverse Engineering the React Native Android Mobile app, it seems like the API fetches the URL and collects its HTML meta tags, looking for open graph tags (`og:`), oEmbeds, X (Twitter) Tags, title tags, and other appropriate properties in the page. It has some kind of integration with the `Slackbot-LinkExpanding 1.0 (+https://api.slack.com/robots)` bot, although the connection is unclear (It seems to be handling links sent from slack and providing the embedded card, probably for testing purposes).
+
+From Slack documentation:
+	This robot responds to links that Slack users post into their channels. It fetches as little of the page as it can (using HTTP Range headers) to extract meta tags about the content. Specifically, we are looking for [oEmbed](http://oembed.com/) and [Twitter Card](https://dev.twitter.com/cards) / [Open Graph](http://ogp.me/) tags. If a page's tags refer to an image, video, or audio file, we will fetch that file as well to check validity and extract other metadata.
+
+
 ## **Analytics:**
 
 ### Sentry System
